@@ -3,8 +3,8 @@ Taboola widget
 
 A custom implementation of Taboola's recommendation widget that circumvents Adblock.
 
-How to use it
--------------
+Quickstart
+----------
 
 See ```/demo/index.html``` for demonstration of the widget in action, or follow the steps below.
 
@@ -35,10 +35,8 @@ See ```/demo/index.html``` for demonstration of the widget in action, or follow 
 <!-- End of invocation code -->
 ```
 
-3: Edit Taboola.css and define your own style
-There is a base responsive stylesheet for the Taboola widget with a couple of breakpoints defined, but I encourage you to customise it to suit your own needs.
-
-3: Profit!
+3: Customise Taboola.css and define your own style
+There is a base stylesheet for the Taboola widget with a couple of basic responsive breakpoints defined, but I encourage you to customise it to suit your own needs.
 
 Additional arguments
 --------------------
