@@ -44,11 +44,11 @@ Additional arguments
 
 There are several arguments you can pass to the widget to control how it behaves. Some are required.
 
-- key: Your personal Taboola API key. Don't have one? Ask your Taboola account manager for one. (Required)
-- pubid: Your publisher ID. Supplied by Taboola. (Required)
-- target: a CSS selector for the container element. (Required)
-- url: the fully qualified URL of the page the widget is embedded on. (Required)
-- count: how many items to return. Defaults to 6.
-- thumbnails: object that specifies the width/height the thumbnail images should be. Defaults to 190x108.
-- lang: a set of localisation strings if you are deploying this across multiple languages.
+- **key**: Your personal Taboola API key. Don't have one? Ask your Taboola account manager for one. (*Required*)
+- **pubid**: Your publisher ID. Supplied by Taboola. (*Required*)
+- **target**: a CSS selector for the container element. (*Required*)
+- **url**: the fully qualified URL of the page the widget is embedded on. (*Required*)
+- **count**: how many items to return. Defaults to 6.
+- **thumbnails**: object that specifies the width/height the thumbnail images should be. Defaults to 190x108.
+- **lang**: a set of localisation strings if you are deploying this across multiple languages.
 
