@@ -36,6 +36,7 @@ See https://cdn.rawgit.com/gamernetwork/taboola-widget/master/demo/index.html fo
 ```
 
 3: Customise Taboola.css and define your own style
+
 There is a base stylesheet for the Taboola widget with a couple of basic responsive breakpoints defined, but I encourage you to customise it to suit your own needs.
 
 Additional arguments
