@@ -12,8 +12,8 @@ How to use it
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.6/jquery-ui.min.js"></script>
 
-<script src="../src/Taboola.js"></script>
-<link rel="stylesheet" type="text/css" href="../src/Taboola.css" media="screen" />
+<script src="https://cdn.rawgit.com/gamernetwork/taboola-widget/master/src/Taboola.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/gamernetwork/taboola-widget/master/src/Taboola.css" media="screen" />
 <!-- End of required scripts and styles --> 
 ```
 
