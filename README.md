@@ -6,6 +6,8 @@ A custom implementation of Taboola's recommendation widget that circumvents Adbl
 How to use it
 -------------
 
+See ```/demo/index.html``` for demonstration of the widget in action.
+
 1: Include jQuery, Taboola.js and Taboola.css in your page:
 ```
 <!-- Required scripts and styles -->
@@ -34,6 +36,9 @@ How to use it
 </script>
 <!-- End of invocation code -->
 ```
+
+3: Edit Taboola.css and define your own style
+There is a base responsive stylesheet for the Taboola widget with a couple of breakpoints defined, but I encourage you to customise it to suit your own needs.
 
 3: Profit!
 
