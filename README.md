@@ -12,8 +12,6 @@ See ```/demo/index.html``` for demonstration of the widget in action, or follow 
 ```
 <!-- Required scripts and styles -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.6/jquery-ui.min.js"></script>
-
 <script src="https://cdn.rawgit.com/gamernetwork/taboola-widget/master/src/Taboola.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/gamernetwork/taboola-widget/master/src/Taboola.css" media="screen" />
 <!-- End of required scripts and styles --> 
