@@ -8,7 +8,7 @@ Quickstart
 
 See https://cdn.rawgit.com/gamernetwork/taboola-widget/master/demo/index.html for a demonstration of the widget in action, or follow the steps below.
 
-*1: Include jQuery, Taboola.js and Taboola.css in your page:*
+**1: Include jQuery, Taboola.js and Taboola.css in your page:**
 ```
 <!-- Required scripts and styles -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
@@ -17,7 +17,7 @@ See https://cdn.rawgit.com/gamernetwork/taboola-widget/master/demo/index.html fo
 <!-- End of required scripts and styles --> 
 ```
 
-*2: Define a container div, and invoke the Taboola class:*
+**2: Define a container div, and invoke the Taboola class:**
 ```
 <!-- Invocation code -->
 <div id="taboola"></div>
@@ -35,7 +35,7 @@ See https://cdn.rawgit.com/gamernetwork/taboola-widget/master/demo/index.html fo
 <!-- End of invocation code -->
 ```
 
-*3: Customise Taboola.css and define your own style*
+**3: Customise Taboola.css and define your own style**
 
 There is a base stylesheet for the Taboola widget with a couple of basic responsive breakpoints defined, but I encourage you to customise it to suit your own needs.
 
