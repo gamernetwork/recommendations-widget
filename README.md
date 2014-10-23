@@ -6,7 +6,7 @@ A custom implementation of Taboola's recommendation widget that circumvents Adbl
 Usage
 -----
 
-1. Include jQuery, Taboola.js and Taboola.css in your page:
+1: Include jQuery, Taboola.js and Taboola.css in your page:
 ```
 <!-- Required scripts and styles -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
@@ -17,7 +17,7 @@ Usage
 <!-- End of required scripts and styles --> 
 ```
 
-2. Define a container div, and invoke the Taboola class:
+2: Define a container div, and invoke the Taboola class:
 ```
 <!-- Invocation code -->
 <div id="taboola"></div>
@@ -34,6 +34,8 @@ Usage
 </script>
 <!-- End of invocation code -->
 ```
+
+3: Profit!
 
 Parameters
 ----------
