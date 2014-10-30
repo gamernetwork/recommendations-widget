@@ -17,7 +17,7 @@ See https://rawgit.com/gamernetwork/recommendations-widget/master/demo/index.htm
 <!-- End of required scripts and styles --> 
 ```
 
-**2: Define a container div, and invoke the Taboola class:**
+**2: Define a container div, and invoke the Recommendations class:**
 ```
 <!-- Invocation code -->
 <div id="recommendations"></div>
@@ -54,3 +54,4 @@ There are several arguments you can pass to the widget to control how it behaves
 - **thumbnails**: object that specifies the width/height the thumbnail images should be. Defaults to 190x108.
 - **lang**: a set of localisation strings if you are deploying this across multiple languages.
 
+Any questions? Email craig@gamer-network.net.
