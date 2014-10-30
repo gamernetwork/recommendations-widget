@@ -30,7 +30,7 @@ See https://rawgit.com/gamernetwork/recommendations-widget/master/demo/index.htm
 		id: "1021030103",
 		count: 9,
 		thumbnails: { width: 214, height: 110 },
-		lang: 
+		lang: { title: "Sponsored stories", via: "Via" }
 	});
 </script>
 <!-- End of invocation code -->
