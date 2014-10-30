@@ -1,12 +1,12 @@
-#taboola,
-#taboola *
+#recommendations,
+#recommendations *
 {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-#taboola
+#recommendations
 {
 	position: relative;
 	float: left;
@@ -14,7 +14,7 @@
 	padding: 0;
 }
 
-#taboola > .title
+#recommendations > .title
 {
 	margin: 0 0 15px 0;
 	padding: 0;
@@ -24,9 +24,9 @@
 	color: #808080;
 }
 
-#taboola > ul,
-#taboola > ul > li,
-#taboola > ul > li > div
+#recommendations > ul,
+#recommendations > ul > li,
+#recommendations > ul > li > div
 {
 	position: relative;
 	display: block;
@@ -36,24 +36,24 @@
 	list-style: none;
 }
 
-#taboola > ul
+#recommendations > ul
 {
 	width: 100%;
 }
 
-#taboola > ul > li
+#recommendations > ul > li
 {
 	width: 100%;
 	text-align: left;
 }
 
-#taboola > ul > li > div
+#recommendations > ul > li > div
 {
 	width: 100%;
 	padding-bottom: 1.25em;
 }
 
-#taboola > ul > li > div > *
+#recommendations > ul > li > div > *
 {
 	position: relative;
 	display: block;
@@ -66,7 +66,7 @@
 	line-height: 1;
 }
 
-#taboola > ul > li > div > .cover
+#recommendations > ul > li > div > .cover
 {
 	height: 0;
 	margin: 0 0 7px;
@@ -78,43 +78,43 @@
 	border: 1px solid rgba(0,0,0,.2);
 }
 
-#taboola > ul > li > div > h5
+#recommendations > ul > li > div > h5
 {
 	font-size: 15px;
 	margin: 0 0 3px;	
 }
 
-#taboola > ul > li > div > h5 > a
+#recommendations > ul > li > div > h5 > a
 {
 	color: #189bfe;
 }
 
-#taboola > ul > li > div > p
+#recommendations > ul > li > div > p
 {
 	font-size: .8em;
 	padding-bottom: .25em;
 }
 
-#taboola > ul > li > div > p > a
+#recommendations > ul > li > div > p > a
 {
 	color: black;
 }
 
-#taboola > ul > li > div > h5 > a,
-#taboola > ul > li > div > p > a
+#recommendations > ul > li > div > h5 > a,
+#recommendations > ul > li > div > p > a
 {
 	text-decoration: none;
 }
 
 @media screen and (min-width: 481px)
 {
-	#taboola > ul > li
+	#recommendations > ul > li
 	{
 		width: 50%;
 		padding: 0 .5em;
 	}
 
-	#taboola > ul > li:nth-of-type(odd)
+	#recommendations > ul > li:nth-of-type(odd)
 	{
 		clear: left;
 	}
@@ -122,17 +122,17 @@
 
 @media screen and (min-width: 768px)
 {
-	#taboola > ul > li
+	#recommendations > ul > li
 	{
 		width: 33.333%;
 	}
 
-	#taboola > ul > li:nth-of-type(odd)
+	#recommendations > ul > li:nth-of-type(odd)
 	{
 		clear: none;
 	}
 
-	#taboola > ul > li:nth-of-type(3n+4)
+	#recommendations > ul > li:nth-of-type(3n+4)
 	{
 		clear: left;
 	}
