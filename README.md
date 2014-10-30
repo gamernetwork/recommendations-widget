@@ -12,8 +12,8 @@ See https://rawgit.com/gamernetwork/recommendations-widget/master/demo/index.htm
 ```
 <!-- Required scripts and styles -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-<script src="https://cdn.rawgit.com/gamernetwork/recommendations-widget/master/src/Recommendations.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/gamernetwork/recommendations-widget/master/src/Recommendations.css" media="screen" />
+<script src="https://rawgit.com/gamernetwork/recommendations-widget/master/src/Recommendations.js"></script>
+<link rel="stylesheet" type="text/css" href="https://rawgit.com/gamernetwork/recommendations-widget/master/src/Recommendations.css" media="screen" />
 <!-- End of required scripts and styles --> 
 ```
 
