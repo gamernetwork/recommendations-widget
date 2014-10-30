@@ -17,8 +17,33 @@ var Recommendations = function(args) {
 
 	self.run = function(self)
 	{
+		if(!self.key)
+		{
+			console.log("[Recommendations] Failed: No API key specified");
+		}
+		
+		if(!self.target)
+		{
+			console.log("[Recommendations] Failed: No target specified");
+		}
+		
+		if(!self.id)
+		{
+			console.log("[Recommendations] Failed: No unique page ID specified");
+		}
+		
+		if(!self.url)
+		{
+			console.log("[Recommendations] Failed: Missing URL");
+		}
+		
+		if(!self.pubid)
+		{
+			console.log("[Recommendations] Failed: No publisher ID specified");
+		}
+		
 		// Build request
-		if(self.url && self.target && self.id)
+		if(self.url && self.target && self.id && self.pubid)
 		{
 			jQuery.getJSON(
 				self.endpoint,
