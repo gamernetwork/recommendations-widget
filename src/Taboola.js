@@ -6,18 +6,19 @@ var Taboola = function(args) {
 	self = {};	
 	self.key = args.key;
 	self.pubid = args.pubid;
-	self.url = args.url;			
+	self.url = args.url;
+	self.id = args.id;
 	self.target = $(args.target);
 	self.count = args.count || 6;
 	self.lang = args.lang || { title: "Promoted stories", via: "From" };
 	self.thumbnails = args.thumbnails || { width: 190, height: 108 };
 
-	self.endpoint = "//api.taboola.com/1.1/json/" + self.pubid + "/recommendations.get?app.type=mobile&app.apikey=" + self.key +"&rec.count=" + self.count + "&rec.type=mix&user.session=init&source.type=text&source.id=214321562187&source.url=" + encodeURIComponent(self.url) + "&rec.thumbnail.width=" + self.thumbnails.width + "&rec.thumbnail.height=" + self.thumbnails.height + "&rec.callback=?";
+	self.endpoint = "//api.taboola.com/1.1/json/" + self.pubid + "/recommendations.get?app.type=mobile&app.apikey=" + self.key +"&rec.count=" + self.count + "&rec.type=mix&user.session=init&source.type=text&source.id=" + self.id + "&source.url=" + encodeURIComponent(self.url) + "&rec.thumbnail.width=" + self.thumbnails.width + "&rec.thumbnail.height=" + self.thumbnails.height + "&rec.callback=?";
 
 	self.run = function(self)
 	{
 		// Build request
-		if(self.url && self.target)
+		if(self.url && self.target && self.id)
 		{
 			jQuery.getJSON(
 				self.endpoint,
