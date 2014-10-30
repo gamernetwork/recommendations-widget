@@ -77,7 +77,7 @@ var Recommendations = function(args) {
 			}
 							
 			// Insert block into target
-			self.target.html(' \
+			self.target.innerHTML = ' \
 				<p class="title">' + self.lang.title + '</p> \
 				<ul>' + buffer + '</ul>'
 			);
