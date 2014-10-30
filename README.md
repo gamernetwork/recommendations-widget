@@ -47,7 +47,7 @@ There are several arguments you can pass to the widget to control how it behaves
 
 - **key**: Your personal Taboola API key. Don't have one? Ask your Taboola account manager for one. (*Required*)
 - **pubid**: Your publisher ID. Supplied by Taboola. (*Required*)
-- **target**: a CSS selector for the container element. (*Required*)
+- **target**: The DOM element that recommendations will appear in. (*Required*)
 - **url**: the fully qualified URL of the page the widget is embedded on. (*Required*)
 - **id**: a unique identifier for the page you are using the widget on. (*Required*)
 - **count**: how many items to return. Defaults to 6.
