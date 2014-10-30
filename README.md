@@ -49,7 +49,7 @@ There are several arguments you can pass to the widget to control how it behaves
 - **pubid**: Your publisher ID. Supplied by Taboola. (*Required*)
 - **target**: a CSS selector for the container element. (*Required*)
 - **url**: the fully qualified URL of the page the widget is embedded on. (*Required*)
-- *id**: a unique identifier for the page you are using the widget on. (*Required*)
+- **id**: a unique identifier for the page you are using the widget on. (*Required*)
 - **count**: how many items to return. Defaults to 6.
 - **thumbnails**: object that specifies the width/height the thumbnail images should be. Defaults to 190x108.
 - **lang**: a set of localisation strings if you are deploying this across multiple languages.
