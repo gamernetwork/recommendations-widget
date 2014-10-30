@@ -1,7 +1,7 @@
 // Prototype-free version.
 // Requires jQuery for the JSONP callback.
 
-var Taboola = function(args) {
+var Recommendations = function(args) {
 
 	self = {};	
 	self.key = args.key;
