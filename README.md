@@ -1,31 +1,31 @@
-Taboola widget
-==============
+Recommendations widget
+======================
 
 A custom implementation of Taboola's recommendation widget that circumvents Adblock.
 
 Quickstart
 ----------
 
-See https://cdn.rawgit.com/gamernetwork/taboola-widget/master/demo/index.html for a demonstration of the widget in action, or follow the steps below.
+See https://cdn.rawgit.com/gamernetwork/recommendations-widget/master/demo/index.html for a demonstration of the widget in action, or follow the steps below.
 
-**1: Include jQuery, Taboola.js and Taboola.css in your page:**
+**1: Include jQuery, Recommendations.js and Recommendations.css in your page:**
 ```
 <!-- Required scripts and styles -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-<script src="https://cdn.rawgit.com/gamernetwork/taboola-widget/master/src/Taboola.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/gamernetwork/taboola-widget/master/src/Taboola.css" media="screen" />
+<script src="https://cdn.rawgit.com/gamernetwork/recommendations-widget/master/src/Recommendations.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/gamernetwork/recommendations-widget/master/src/Recommendations.css" media="screen" />
 <!-- End of required scripts and styles --> 
 ```
 
 **2: Define a container div, and invoke the Taboola class:**
 ```
 <!-- Invocation code -->
-<div id="taboola"></div>
+<div id="recommendations"></div>
 <script>
-	new Taboola({
+	new Recommendations({
 		key: "1234567890",
 		pubid: "mysite",
-		target: "#taboola",
+		target: document.getElementById("recommendations"),
 		url: "http://www.eurogamer.net/articles/hello-world",
 		id: "1021030103",
 		count: 9,
@@ -36,9 +36,9 @@ See https://cdn.rawgit.com/gamernetwork/taboola-widget/master/demo/index.html fo
 <!-- End of invocation code -->
 ```
 
-**3: Customise Taboola.css and define your own style**
+**3: Customise Recommendations.css and define your own style**
 
-There is a base stylesheet for the Taboola widget with a couple of basic responsive breakpoints defined, but I encourage you to customise it to suit your own needs.
+There is a base stylesheet for the recommendations widget with a couple of basic responsive breakpoints defined, but I encourage you to customise it to suit your own needs.
 
 Additional arguments
 --------------------
