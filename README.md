@@ -6,7 +6,7 @@ A custom implementation of Taboola's recommendation widget that circumvents Adbl
 Quickstart
 ----------
 
-See https://cdn.rawgit.com/gamernetwork/recommendations-widget/master/demo/index.html for a demonstration of the widget in action, or follow the steps below.
+See https://rawgit.com/gamernetwork/recommendations-widget/master/demo/index.html for a demonstration of the widget in action, or follow the steps below.
 
 **1: Include jQuery, Recommendations.js and Recommendations.css in your page:**
 ```
