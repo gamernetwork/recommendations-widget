@@ -11,9 +11,10 @@ var Recommendations = function(args) {
 	self.target = args.target;
 	self.count = args.count || 6;
 	self.lang = args.lang || { title: "From The Web - sponsored links by Taboola", via: "From" };
-	self.thumbnails = args.thumbnails || { width: 190, height: 108 };
+	self.thumbnails = args.thumbnails || { width: 190, height: 190 };
+	self.type = args.type || "desktop";
 
-	self.endpoint = "//api.taboola.com/1.1/json/" + self.pubid + "/recommendations.get?app.type=mobile&app.apikey=" + self.key +"&rec.count=" + self.count + "&rec.type=mix&user.session=init&source.type=text&source.id=" + self.id + "&source.url=" + encodeURIComponent(self.url) + "&rec.thumbnail.width=" + self.thumbnails.width + "&rec.thumbnail.height=" + self.thumbnails.height + "&rec.callback=?";
+	self.endpoint = "//api.taboola.com/1.1/json/" + self.pubid + "/recommendations.get?app.type=" + self.type + "&app.apikey=" + self.key +"&rec.count=" + self.count + "&rec.type=mix&user.session=init&source.type=text&source.id=" + self.id + "&source.url=" + encodeURIComponent(self.url) + "&rec.thumbnail.width=" + self.thumbnails.width + "&rec.thumbnail.height=" + self.thumbnails.height + "&rec.callback=?";
 
 	self.run = function(self)
 	{
