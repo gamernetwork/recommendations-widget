@@ -89,17 +89,17 @@ var Recommendations = function(args) {
 			<li> \
 				<div> \
 					<a href="#" onclick="window.location=\'#{url}\';return false;" rel="nofollow" class="cover" style="background-image: url(#{image});"></a> \
+					<h5> \
+						<a href="#" onclick="window.location=\'#{url}\';return false;" rel="nofollow"> \
+							#{name} \
+						</a> \
+					</h5> \
 					<p> \
 						#{via} \
 						<a href="#" onclick="window.location=\'#{url}\';return false;" rel="nofollow"> \
 							#{branding} \
 						</a> \
 					</p> \
-					<h5> \
-						<a href="#" onclick="window.location=\'#{url}\';return false;" rel="nofollow"> \
-							#{name} \
-						</a> \
-					</h5> \
 				</div> \
 			</li> \
 	';
