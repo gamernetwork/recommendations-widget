@@ -10,7 +10,7 @@ var Recommendations = function(args) {
 	self.id = args.id;
 	self.target = args.target;
 	self.count = args.count || 6;
-	self.lang = args.lang || { title: "From The Web - sponsored links by Taboola", via: "From" };
+	self.lang = args.lang || { title: "From the Web <a href='http://www.taboola.com/popup' style='float: right'>Sponsored links by Taboola</a>", via: "From" };
 	self.thumbnails = args.thumbnails || { width: 300, height: 300 };
 	self.type = args.type || "desktop";
 	self.session = "init";
@@ -63,7 +63,7 @@ var Recommendations = function(args) {
 		if(self.url && self.target && self.id && self.pubid)
 		{
 			jQuery.getJSON(
-				"//api.taboola.com/1.1/json/" + self.pubid + "/recommendations.get?app.type=" + self.type + "&app.apikey=" + self.key +"&rec.count=" + self.count + "&rec.type=mix&rec.visible=true&user.id=" + self.id + "&user.session=" + self.session + "&user.referrer=" +  encodeURIComponent(document.referrer) + "&user.agent=" + encodeURIComponent(navigator.userAgent) + "&source.type=text&source.placement=article&source.id=" + self.id + "&source.url=" + encodeURIComponent(self.url) + "&rec.thumbnail.width=" + self.thumbnails.width + "&rec.thumbnail.height=" + self.thumbnails.height + "&rec.callback=?",
+				"//api.taboola.com/1.1/json/" + self.pubid + "/recommendations.get?app.type=" + self.type + "&app.apikey=" + self.key +"&rec.count=" + self.count + "&rec.type=mix&rec.visible=false&user.id=" + self.id + "&user.session=" + self.session + "&user.referrer=" +  encodeURIComponent(document.referrer) + "&user.agent=" + encodeURIComponent(navigator.userAgent) + "&source.type=text&source.placement=article&source.id=" + self.id + "&source.url=" + encodeURIComponent(self.url) + "&rec.thumbnail.width=" + self.thumbnails.width + "&rec.thumbnail.height=" + self.thumbnails.height + "&rec.callback=?",
 				self.callback
 			);
 		}
@@ -72,7 +72,6 @@ var Recommendations = function(args) {
 	self.callback = function(json)
 	{
 		self.session = json.session;
-		console.log(self.session);
 		
 		if(json.list.length > 0)
 		{
@@ -101,8 +100,16 @@ var Recommendations = function(args) {
 				<p class="title">' + self.lang.title + '</p> \
 				<ul>' + buffer + '</ul> \
 			';
+			
+			// Make a "visibility notification"
+			jQuery.getJSON(
+				"//api.taboola.com/1.1/json/" + self.pubid + "/recommendations.notify-visible?app.type=" + self.type + "&app.apikey=" + self.key + "&response.id=" + json.id + "&response.session=" + self.session + "&rec.callback=?",
+				self.visibleCallback
+			);
 		}
 	}
+	
+	self.visibleCallback = function(json) {}
 
 	self.template = ' \
 			<li> \

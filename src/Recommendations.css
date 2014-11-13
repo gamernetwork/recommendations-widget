@@ -17,11 +17,21 @@
 #recommendations > .title
 {
 	margin: 0 0 15px 0;
-	padding: 0;
+	padding: 0 .3em;
 	font-size: 1.3em;
 	line-height: 1;
 	font-weight: bold;
 	color: #808080;
+	text-align: left;
+}
+
+#recommendations > .title > a
+{
+	font-size: .7em;
+	font-weight: normal;
+	text-decoration: none;
+	color: inherit;
+	padding-top: .4em;
 }
 
 #recommendations > ul,
@@ -92,7 +102,7 @@
 #recommendations > ul > li > div > p
 {
 	font-size: .8em;
-	padding-bottom: .25em;
+	padding-top: .25em;
 }
 
 #recommendations > ul > li > div > p > a
