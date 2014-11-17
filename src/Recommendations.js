@@ -14,6 +14,8 @@ var Recommendations = function(args) {
 	self.thumbnails = args.thumbnails || { width: 300, height: 300 };
 	self.type = args.type || "desktop";
 	self.session = "init";
+	self.notified = false;
+	self.response = false;
 	
 	self.generateID = function()
 	{
@@ -61,7 +63,7 @@ var Recommendations = function(args) {
 		
 		// Build request
 		if(self.url && self.target && self.id && self.pubid)
-		{
+		{			
 			jQuery.getJSON(
 				"//api.taboola.com/1.1/json/" + self.pubid + "/recommendations.get?app.type=" + self.type + "&app.apikey=" + self.key +"&rec.count=" + self.count + "&rec.type=mix&rec.visible=false&user.id=" + self.id + "&user.session=" + self.session + "&user.referrer=" +  encodeURIComponent(document.referrer) + "&user.agent=" + encodeURIComponent(navigator.userAgent) + "&source.type=text&source.placement=article&source.id=" + self.id + "&source.url=" + encodeURIComponent(self.url) + "&rec.thumbnail.width=" + self.thumbnails.width + "&rec.thumbnail.height=" + self.thumbnails.height + "&rec.callback=?",
 				self.callback
@@ -69,9 +71,29 @@ var Recommendations = function(args) {
 		}
 	}
 	
+	self.viewportCheck = function()
+	{
+		if(self.withinViewport(self.target) && self.notified == false)
+		{
+			// Make a "visibility notification" after item is in the
+			// viewport for 2 seconds			
+			self.timer = setTimeout(self.runCallback, 2000);
+			self.notified = true;
+		}		
+	}
+
+	self.runCallback = function()
+	{		
+		jQuery.getJSON(
+			"//api.taboola.com/1.1/json/" + self.pubid + "/recommendations.notify-visible?app.type=" + self.type + "&app.apikey=" + self.key + "&response.id=" + self.response + "&response.session=" + self.session + "&rec.callback=?",
+			self.visibleCallback
+		);
+	}
+	
 	self.callback = function(json)
 	{
 		self.session = json.session;
+		self.response = json.id;
 		
 		if(json.list.length > 0)
 		{
@@ -101,15 +123,13 @@ var Recommendations = function(args) {
 				<ul>' + buffer + '</ul> \
 			';
 			
-			// Make a "visibility notification"
-			jQuery.getJSON(
-				"//api.taboola.com/1.1/json/" + self.pubid + "/recommendations.notify-visible?app.type=" + self.type + "&app.apikey=" + self.key + "&response.id=" + json.id + "&response.session=" + self.session + "&rec.callback=?",
-				self.visibleCallback
-			);
+			window.addEventListener("scroll", self.viewportCheck);
+			self.viewportCheck();
+			
 		}
 	}
 	
-	self.visibleCallback = function(json) {}
+	self.visibleCallback = function() {}
 
 	self.template = ' \
 			<li> \
@@ -129,6 +149,18 @@ var Recommendations = function(args) {
 				</div> \
 			</li> \
 	';
+
+	self.withinViewport = function(el)
+	{
+		var rect = el.getBoundingClientRect();
+		
+		return (
+		    rect.top >= 0 &&
+		    rect.left >= 0 &&
+		    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+		    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+		);
+	}
 	
 	self.run(self);	
 };
