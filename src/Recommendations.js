@@ -109,7 +109,7 @@ var Recommendations = function(args) {
 				var item = self.template;
 				item = item.replace(/#{url}/g, data.url);
 				item = item.replace(/#{name}/g, data.name);
-				item = item.replace(/#{branding}/g, data.branding);
+				item = item.replace(/#{branding}/g, data.branding > "" ? data.branding : window.location.hostname);
 				item = item.replace(/#{image}/g, data.thumbnail[0].url);
 				item = item.replace(/#{via}/g, self.lang.via);
 				
