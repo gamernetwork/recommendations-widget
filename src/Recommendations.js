@@ -3,21 +3,22 @@
 
 var Recommendations = function(args) {
 
-	self = {};	
-	self.key = args.key;
-	self.pubid = args.pubid;
-	self.url = args.url;
-	self.id = args.id;
-	self.target = args.target;
-	self.count = args.count || 6;
-	self.lang = args.lang || { title: "From the Web <a href='http://www.taboola.com/popup' style='float: right'>Sponsored links by Taboola</a>", via: "From" };
-	self.thumbnails = args.thumbnails || { width: 300, height: 300 };
-	self.type = args.type || "desktop";
-	self.notified = false;
-	self.response = false;
-	self.timeout = 0;
+	var context = this;
+	
+	context.key = args.key;
+	context.pubid = args.pubid;
+	context.url = args.url;
+	context.id = args.id;
+	context.target = args.target;
+	context.count = args.count || 6;
+	context.lang = args.lang || { title: "From the Web <a href='http://www.taboola.com/popup' style='float: right'>Sponsored links by Taboola</a>", via: "From" };
+	context.thumbnails = args.thumbnails || { width: 300, height: 300 };
+	context.type = args.type || "desktop";
+	context.notified = false;
+	context.response = false;
+	context.timeout = 0;
 
-	self.getSessionID = function()
+	context.getSessionID = function()
 	{
 		if(localStorage.getItem("recommendations-session-id"))
 		{
@@ -29,7 +30,7 @@ var Recommendations = function(args) {
 		}
 	}
 	
-	self.generateUserID = function()
+	context.generateUserID = function()
 	{
 		if(localStorage.getItem("recommendations-id"))
 		{
@@ -44,76 +45,76 @@ var Recommendations = function(args) {
 		}
 	}
 
-	self.session = self.getSessionID();
-	self.uid = self.generateUserID();
+	context.session = context.getSessionID();
+	context.uid = context.generateUserID();
 
-	self.run = function(self)
+	context.run = function()
 	{
-		if(!self.key)
+		if(!context.key)
 		{
 			console.log("[Recommendations] Failed: No API key specified");
 		}
 		
-		if(!self.target)
+		if(!context.target)
 		{
 			console.log("[Recommendations] Failed: No target specified");
 		}
 		
-		if(!self.id)
+		if(!context.id)
 		{
 			console.log("[Recommendations] Failed: No unique page ID specified");
 		}
 		
-		if(!self.url)
+		if(!context.url)
 		{
 			console.log("[Recommendations] Failed: Missing URL");
 		}
 		
-		if(!self.pubid)
+		if(!context.pubid)
 		{
 			console.log("[Recommendations] Failed: No publisher ID specified");
 		}
 		
 		// Build request
-		if(self.url && self.target && self.id && self.pubid)
+		if(context.url && context.target && context.id && context.pubid)
 		{			
 			jQuery.getJSON(
-				"//api.taboola.com/1.1/json/" + self.pubid + "/recommendations.get?app.type=" + self.type + "&app.apikey=" + self.key +"&rec.count=" + self.count + "&rec.type=mix&rec.visible=false&user.id=" + self.uid + "&user.session=" + self.session + "&user.referrer=" +  encodeURIComponent(document.referrer) + "&user.agent=" + encodeURIComponent(navigator.userAgent) + "&source.type=text&source.placement=article&source.id=" + self.id + "&source.url=" + encodeURIComponent(self.url) + "&rec.thumbnail.width=" + self.thumbnails.width + "&rec.thumbnail.height=" + self.thumbnails.height + "&rec.callback=?",
-				self.callback
+				"//api.taboola.com/1.1/json/" + context.pubid + "/recommendations.get?app.type=" + context.type + "&app.apikey=" + context.key +"&rec.count=" + context.count + "&rec.type=mix&rec.visible=false&user.id=" + context.uid + "&user.session=" + context.session + "&user.referrer=" +  encodeURIComponent(document.referrer) + "&user.agent=" + encodeURIComponent(navigator.userAgent) + "&source.type=text&source.placement=article&source.id=" + context.id + "&source.url=" + encodeURIComponent(context.url) + "&rec.thumbnail.width=" + context.thumbnails.width + "&rec.thumbnail.height=" + context.thumbnails.height + "&rec.callback=?",
+				context.callback
 			);
 		}
 	}
 	
-	self.viewportCheck = function()
+	context.viewportCheck = function()
 	{
-		if(self.withinViewport(self.target))
+		if(context.withinViewport(context.target))
 		{
 			// Make a "visibility notification"
-			window.clearTimeout(self.timeout);
-			self.runCallback();
-			self.notified = true;
+			window.clearTimeout(context.timeout);
+			context.runCallback();
+			context.notified = true;
 		}
 		else
 		{
-			self.timeout = window.setTimeout(self.viewportCheck, 500);
+			context.timeout = window.setTimeout(context.viewportCheck, 500);
 		}
 	}
 
-	self.runCallback = function()
+	context.runCallback = function()
 	{		
 		jQuery.getJSON(
-			"//api.taboola.com/1.1/json/" + self.pubid + "/recommendations.notify-visible?app.type=" + self.type + "&app.apikey=" + self.key + "&response.id=" + self.response + "&response.session=" + self.session + "&rec.callback=?",
-			self.visibleCallback
+			"//api.taboola.com/1.1/json/" + context.pubid + "/recommendations.notify-visible?app.type=" + context.type + "&app.apikey=" + context.key + "&response.id=" + context.response + "&response.session=" + context.session + "&rec.callback=?",
+			context.visibleCallback
 		);
 	}
 	
-	self.callback = function(json)
+	context.callback = function(json)
 	{
 		// Store session id
 		localStorage.setItem("recommendations-session-id", json.session);
 		
-		self.session = json.session;
-		self.response = json.id;
+		context.session = json.session;
+		context.response = json.id;
 		
 		if(json.list.length > 0)
 		{
@@ -126,30 +127,30 @@ var Recommendations = function(args) {
 				var data = json.list[i];
 				
 				// Template transform
-				var item = self.template;
+				var item = context.template;
 				item = item.replace(/#{url}/g, data.url);
 				item = item.replace(/#{name}/g, data.name);
 				item = item.replace(/#{branding}/g, data.branding > "" ? data.branding : window.location.hostname);
 				item = item.replace(/#{image}/g, data.thumbnail[0].url);
-				item = item.replace(/#{via}/g, self.lang.via);
+				item = item.replace(/#{via}/g, context.lang.via);
 				
 				// Add item to buffer
 				buffer += item;
 			}
 							
 			// Insert block into target
-			self.target.innerHTML = ' \
-				<p class="title">' + self.lang.title + '</p> \
+			context.target.innerHTML = ' \
+				<p class="title">' + context.lang.title + '</p> \
 				<ul>' + buffer + '</ul> \
 			';
 			
-			self.viewportCheck();
+			context.viewportCheck();
 		}
 	}
 	
-	self.visibleCallback = function() {}
+	context.visibleCallback = function() {}
 
-	self.template = ' \
+	context.template = ' \
 			<li> \
 				<div> \
 					<a href="#" onclick="window.open(\'#{url}\', \'_blank\');" rel="nofollow" class="cover" style="background-image: url(#{image});"></a> \
@@ -168,7 +169,7 @@ var Recommendations = function(args) {
 			</li> \
 	';
 
-	self.withinViewport = function(el)
+	context.withinViewport = function(el)
 	{
 		var r, html;
 		if ( !el || 1 !== el.nodeType ) { return false; }
@@ -183,5 +184,5 @@ var Recommendations = function(args) {
 		);
 	}
 	
-	self.run(self);	
+	context.run();	
 };
