@@ -15,6 +15,7 @@ var Recommendations = function(args) {
 	self.type = args.type || "desktop";
 	self.notified = false;
 	self.response = false;
+	self.timeout = 0;
 
 	self.getSessionID = function()
 	{
@@ -85,13 +86,17 @@ var Recommendations = function(args) {
 	
 	self.viewportCheck = function()
 	{
-		if(self.withinViewport(self.target) && self.notified == false)
+		if(self.withinViewport(self.target))
 		{
-			// Make a "visibility notification" after item is in the
-			// viewport for 2 seconds			
-			self.timer = setTimeout(self.runCallback, 2000);
+			// Make a "visibility notification"
+			window.clearTimeout(self.timeout);
+			self.runCallback();
 			self.notified = true;
-		}		
+		}
+		else
+		{
+			self.timeout = window.setTimeout(self.viewportCheck, 500);
+		}
 	}
 
 	self.runCallback = function()
@@ -138,9 +143,7 @@ var Recommendations = function(args) {
 				<ul>' + buffer + '</ul> \
 			';
 			
-			window.addEventListener("scroll", self.viewportCheck);
 			self.viewportCheck();
-			
 		}
 	}
 	
@@ -167,13 +170,16 @@ var Recommendations = function(args) {
 
 	self.withinViewport = function(el)
 	{
-		var rect = el.getBoundingClientRect();
+		var r, html;
+		if ( !el || 1 !== el.nodeType ) { return false; }
+		html = document.documentElement;
+		r = el.getBoundingClientRect();
 		
-		return (
-		    rect.top >= 0 &&
-		    rect.left >= 0 &&
-		    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-		    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+		return ( !!r 
+		  && r.bottom >= 0 
+		  && r.right >= 0 
+		  && r.top <= html.clientHeight 
+		  && r.left <= html.clientWidth 
 		);
 	}
 	
