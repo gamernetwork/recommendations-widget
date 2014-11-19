@@ -13,11 +13,22 @@ var Recommendations = function(args) {
 	self.lang = args.lang || { title: "From the Web <a href='http://www.taboola.com/popup' style='float: right'>Sponsored links by Taboola</a>", via: "From" };
 	self.thumbnails = args.thumbnails || { width: 300, height: 300 };
 	self.type = args.type || "desktop";
-	self.session = "init";
 	self.notified = false;
 	self.response = false;
+
+	self.getSessionID = function()
+	{
+		if(localStorage.getItem("recommendations-session-id"))
+		{
+			return localStorage.getItem("recommendations-session-id");
+		}
+		else
+		{
+			return "init";
+		}
+	}
 	
-	self.generateID = function()
+	self.generateUserID = function()
 	{
 		if(localStorage.getItem("recommendations-id"))
 		{
@@ -32,7 +43,8 @@ var Recommendations = function(args) {
 		}
 	}
 
-	self.id = self.generateID();
+	self.session = self.getSessionID();
+	self.uid = self.generateUserID();
 
 	self.run = function(self)
 	{
@@ -65,7 +77,7 @@ var Recommendations = function(args) {
 		if(self.url && self.target && self.id && self.pubid)
 		{			
 			jQuery.getJSON(
-				"//api.taboola.com/1.1/json/" + self.pubid + "/recommendations.get?app.type=" + self.type + "&app.apikey=" + self.key +"&rec.count=" + self.count + "&rec.type=mix&rec.visible=false&user.id=" + self.id + "&user.session=" + self.session + "&user.referrer=" +  encodeURIComponent(document.referrer) + "&user.agent=" + encodeURIComponent(navigator.userAgent) + "&source.type=text&source.placement=article&source.id=" + self.id + "&source.url=" + encodeURIComponent(self.url) + "&rec.thumbnail.width=" + self.thumbnails.width + "&rec.thumbnail.height=" + self.thumbnails.height + "&rec.callback=?",
+				"//api.taboola.com/1.1/json/" + self.pubid + "/recommendations.get?app.type=" + self.type + "&app.apikey=" + self.key +"&rec.count=" + self.count + "&rec.type=mix&rec.visible=false&user.id=" + self.uid + "&user.session=" + self.session + "&user.referrer=" +  encodeURIComponent(document.referrer) + "&user.agent=" + encodeURIComponent(navigator.userAgent) + "&source.type=text&source.placement=article&source.id=" + self.id + "&source.url=" + encodeURIComponent(self.url) + "&rec.thumbnail.width=" + self.thumbnails.width + "&rec.thumbnail.height=" + self.thumbnails.height + "&rec.callback=?",
 				self.callback
 			);
 		}
@@ -92,6 +104,9 @@ var Recommendations = function(args) {
 	
 	self.callback = function(json)
 	{
+		// Store session id
+		localStorage.setItem("recommendations-session-id", json.session);
+		
 		self.session = json.session;
 		self.response = json.id;
 		
