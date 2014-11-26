@@ -154,15 +154,15 @@ var Recommendations = function(args) {
 	context.template = ' \
 			<li> \
 				<div> \
-					<a href="#" onclick="window.open(\'#{url}\', \'_blank\');" rel="nofollow" class="cover" style="background-image: url(#{image});"></a> \
+					<a href="#" onclick="window.open(\'#{url}\', \'_blank\');return false;" rel="nofollow" class="cover" style="background-image: url(#{image});"></a> \
 					<h5> \
-						<a href="#" onclick="window.open(\'#{url}\', \'_blank\');" rel="nofollow"> \
+						<a href="#" onclick="window.open(\'#{url}\', \'_blank\');return false;" rel="nofollow"> \
 							#{name} \
 						</a> \
 					</h5> \
 					<p> \
 						#{via} \
-						<a href="#" onclick="window.open(\'#{url}\', \'_blank\');" rel="nofollow"> \
+						<a href="#" onclick="window.open(\'#{url}\', \'_blank\');return false;" rel="nofollow"> \
 							#{branding} \
 						</a> \
 					</p> \
