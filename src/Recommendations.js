@@ -14,6 +14,7 @@ var Recommendations = function(args) {
 	context.lang = args.lang || { title: "From the Web <a href='http://www.taboola.com/popup' style='float: right'>Sponsored links by Taboola</a>", via: "From" };
 	context.thumbnails = args.thumbnails || { width: 300, height: 300 };
 	context.type = args.type || "desktop";
+	context.page = args.page || "text";
 	context.notified = false;
 	context.response = false;
 	context.timeout = 0;
@@ -79,7 +80,7 @@ var Recommendations = function(args) {
 		if(context.url && context.target && context.id && context.pubid)
 		{			
 			jQuery.getJSON(
-				"//api.taboola.com/1.1/json/" + context.pubid + "/recommendations.get?app.type=" + context.type + "&app.apikey=" + context.key +"&rec.count=" + context.count + "&rec.type=mix&rec.visible=false&user.id=" + context.uid + "&user.session=" + context.session + "&user.referrer=" +  encodeURIComponent(document.referrer) + "&user.agent=" + encodeURIComponent(navigator.userAgent) + "&source.type=text&source.placement=article&source.id=" + context.id + "&source.url=" + encodeURIComponent(context.url) + "&rec.thumbnail.width=" + context.thumbnails.width + "&rec.thumbnail.height=" + context.thumbnails.height + "&rec.callback=?",
+				"//api.taboola.com/1.1/json/" + context.pubid + "/recommendations.get?app.type=" + context.type + "&app.apikey=" + context.key +"&rec.count=" + context.count + "&rec.type=mix&rec.visible=false&user.id=" + context.uid + "&user.session=" + context.session + "&user.referrer=" +  encodeURIComponent(document.referrer) + "&user.agent=" + encodeURIComponent(navigator.userAgent) + "&source.type=" + context.page + "&source.placement=article&source.id=" + context.id + "&source.url=" + encodeURIComponent(context.url) + "&rec.thumbnail.width=" + context.thumbnails.width + "&rec.thumbnail.height=" + context.thumbnails.height + "&rec.callback=?",
 				context.callback
 			);
 		}
